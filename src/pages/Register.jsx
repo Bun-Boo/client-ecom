@@ -95,7 +95,7 @@ const Register = () => {
       setErr(true);
     } else {
       register(dispatch, { username, email, password });
-      window.location.href = "https://shop-hair.netlify.app/login";
+      window.location.replace("https://shop-hair.netlify.app/login");
     }
   };
   return (
