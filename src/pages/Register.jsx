@@ -72,6 +72,10 @@ const Error = styled.span`
   color: red;
   font-size: 12px;
 `;
+const Success = styled.span`
+  color: teal;
+  font-size: 12px;
+`;
 const Linkto = styled.a`
   margin: 5px 0px;
   font-size: 16px;
@@ -88,6 +92,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [cfPassword, setCfPassword] = useState("");
   const [err, setErr] = useState(false);
+  const [re, setRe] = useState(false);
   const dispatch = useDispatch();
   const handleRegister = (e) => {
     e.preventDefault();
@@ -95,7 +100,7 @@ const Register = () => {
       setErr(true);
     } else {
       register(dispatch, { username, email, password });
-      window.location.replace("https://shop-hair.netlify.app/login");
+      setRe(true);
     }
   };
   return (
@@ -132,6 +137,7 @@ const Register = () => {
           </Agreement>
           <Button onClick={handleRegister}>CREATE</Button>
           {err && <Error>Password and Confirm password must be match!</Error>}
+          {re && <Success>Register success ^^ !</Success>}
           <Spann>Do you already have an account ?</Spann>
           <Link to="/login">
             <Linkto>Login</Linkto>
